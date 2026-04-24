@@ -61,28 +61,33 @@ TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 GENRE_MAP = {
     "drama": 18, "romance": 10749, "comedy": 35, 
     "action": 28, "sci-fi": 878, "horror": 27, 
-    "animation": 16, "thriller": 53
+    "animation": 16, "thriller": 53,"youth": 18,
+    "history": 36
 }
 
 def detect_mood_ai(text):
     text_lower = text.lower()
 
-    if any(word in text_lower for word in ["üzgün", "mutsuz", "ağlamak", "drama", "duygusal","hüzünlü"]):
+    if any(word in text_lower for word in ["üzgün", "mutsuz", "ağlamak", "drama", "duygusal","hüzünlü","yalnız","melankolik","doknaklı"]):
         return "drama"
-    if any(word in text_lower for word in ["aşk", "sevgi", "romantik", "sevgili", "evlilik"]):
+    if any(word in text_lower for word in ["aşk", "sevgi", "romantik", "sevgili", "evlilik","duygusal","kalp","huzur","çift"]):
         return "romance"
-    if any(word in text_lower for word in ["komik", "eğlence", "gülmek", "neşeli", "kahkaha","modumu arttırsın"]):
+    if any(word in text_lower for word in ["komik", "eğlence", "gülmek", "neşeli", "kahkaha","modumu arttırsın","mutlu","komedi","keyifli","eğlenmek","absürt"]):
         return "comedy"
-    if any(word in text_lower for word in ["animasyon", "çizgi film", "çocuk", "renkli", "masal"]):
+    if any(word in text_lower for word in ["animasyon", "çizgi film", "çocuk", "renkli", "masal","rengarenk","aile"]):
         return "animation"
-    if any(word in text_lower for word in ["korku", "korkunç", "ürpertici", "zombi", "paranormal"]):
+    if any(word in text_lower for word in ["korku", "korkunç", "ürpertici", "zombi", "paranormal","ürkütücü","hayalet","mezarlık","doğaüstü","kanlı","karanlık","gece"]):
         return "horror"
-    if any(word in text_lower for word in ["gerilim", "gizem", "suç", "polis", "dedektif"]):
+    if any(word in text_lower for word in ["gerilim", "gizem", "suç", "polis", "dedektif","sürükleyici","bulmaca","ajan","ters köşe"]):
         return "thriller"
-    if any(word in text_lower for word in ["aksiyon", "macera", "heyecan", "vurdu kırdı", "savaş"]):
+    if any(word in text_lower for word in ["aksiyon", "macera", "heyecan", "vurdu kırdı", "savaş","dövüş","hız", "patlama", "adrenalin", "süper kahraman", "vurdu kırdı","enerjik"]):
         return "action"
-    if any(word in text_lower for word in ["uzay", "gelecek", "robot", "teknoloji", "bilim kurgu", "sci-fi","bilimsel"]):
+    if any(word in text_lower for word in ["uzay", "gelecek", "robot", "teknoloji", "bilim kurgu", "sci-fi","bilimsel","uzaylı", "yapay zeka", "siber", "paralel evren", "distopya", "teknolojik"]):
         return "sci-fi"
+    if any(word in text_lower for word in ["tarih", "dönem", "eski", "geçmiş", "nostalji", "saray", "kral", "savaş", "yüzyıl", "antik", "orta çağ"]):
+        return "history"
+    if any(word in text_lower for word in ["lise", "gençlik", "okul", "ergen", "arkadaşlık", "mezuniyet", "üniversite", "teen", "genç"]):
+        return "youth"
     
     analysis = TextBlob(text)
     polarity = analysis.sentiment.polarity 
@@ -123,7 +128,7 @@ st.title("🎬 Bugün nasılsın?")
 st.markdown("---")
 
 user_input = st.text_input(
-    "Şu anki ruh halini anlat, sana en uygun filmi seçeyim...",
+    "Nasıl bir film izlemek istersin?",
     placeholder="Örn: Bugün çok enerjik hissediyorum, biraz aksiyon iyi gider!"
 )
 
