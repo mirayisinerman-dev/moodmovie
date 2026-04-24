@@ -5,7 +5,7 @@ import random
 from dotenv import load_dotenv
 from textblob import TextBlob
 
-st.set_page_config(page_title="MoodMovie AI", page_icon="🎬", layout="wide")
+st.set_page_config(page_title="Moodie", page_icon="🎬", layout="wide")
 
 def local_css():
     st.markdown("""
@@ -124,7 +124,7 @@ def get_movies_from_api(genre_names):
         return []
 
 
-st.title("🎬 Bugün nasılsın?")
+st.title("🎬Moodie")
 st.markdown("---")
 
 user_input = st.text_input(
