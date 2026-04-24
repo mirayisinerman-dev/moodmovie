@@ -67,11 +67,11 @@ GENRE_MAP = {
 def detect_mood_ai(text):
     text_lower = text.lower()
 
-    if any(word in text_lower for word in ["üzgün", "mutsuz", "ağlamak", "drama", "duygusal"]):
+    if any(word in text_lower for word in ["üzgün", "mutsuz", "ağlamak", "drama", "duygusal","hüzünlü"]):
         return "drama"
     if any(word in text_lower for word in ["aşk", "sevgi", "romantik", "sevgili", "evlilik"]):
         return "romance"
-    if any(word in text_lower for word in ["komik", "eğlence", "gülmek", "neşeli", "kahkaha"]):
+    if any(word in text_lower for word in ["komik", "eğlence", "gülmek", "neşeli", "kahkaha","modumu arttırsın"]):
         return "comedy"
     if any(word in text_lower for word in ["animasyon", "çizgi film", "çocuk", "renkli", "masal"]):
         return "animation"
