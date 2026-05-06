@@ -69,7 +69,7 @@ def detect_mood_ai(text):
     text_lower = text.lower()
 
     if any(word in text_lower for word in ["üzgün","bitkin",
-    "mutsuz", "ağlamak", "drama", "duygusal","hüzünlü","yalnız","melankolik","dokunaklı","hasta","uykulu","uyku","depresyon","depresif"]):
+    "mutsuz", "ağlamak", "drama", "duygusal","hüzünlü","yalnız","melankolik","doknaklı","hasta","uykulu","uyku","depresyon","depresif"]):
         return "drama"
     if any(word in text_lower for word in ["aşk", "sevgi", "romantik", "sevgili", "evlilik","duygusal","kalp","huzur","çift","aşığım"]):
         return "romance"
@@ -103,7 +103,7 @@ def detect_mood_ai(text):
 def get_movies_from_api(genre_names):
     url = "https://api.themoviedb.org/3/discover/movie"
     genre_ids = [str(GENRE_MAP[g]) for g in genre_names.split() if g in GENRE_MAP]
-    random_page = random.randint(1, 5) 
+    random_page = random.randint(1, 2) 
 
     params = {
         "api_key": TMDB_API_KEY,
