@@ -9,6 +9,7 @@ This is a simple Python-based movie recommendation system that suggests movies b
 
 ## How it works
 User selects a genre (e.g. action, comedy, drama) and the system returns a list of recommended movies.
+https://moodmovie-srbhajzlqgn88qnus4cqgd.streamlit.app
 
 ## Technologies Used
 - Python
